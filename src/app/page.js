@@ -5,17 +5,17 @@ import {faBitcoinSign, faDollarSign} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 async function getCurrentHoldings() {
-    const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings/current")
+    const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings/current", {cache: "no-cache"})
     return res.json()
 }
 
 async function getDailyHistory() {
-    const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings/daily")
+    const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings/daily", {cache: "no-cache"})
     return res.json()
 }
 
 async function getBitcoinPrice() {
-    const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/prices/btc")
+    const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/prices/btc", {cache: "no-cache"})
     const data = await res.json()
     return data.bitcoin.usd;
 }
