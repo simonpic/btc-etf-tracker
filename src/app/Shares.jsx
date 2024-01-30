@@ -1,16 +1,17 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBitcoinSign} from "@fortawesome/free-solid-svg-icons";
+import BitcoinValue from "@/app/components/BitcoinValue";
 
-export default function Shares({etfs}) {
+export default function Shares({etfs, btcPrice}) {
     return (
-        <div>
+        <div className="flex flex-col gap-3">
             {etfs.map(etf => (
-                <div className="flex justify-between text-xl" key={etf.etf}>
-                    <span className="mr-3">{etf.etf}</span>
-                    <span>{etf.shares.toLocaleString()} <FontAwesomeIcon icon={faBitcoinSign}/></span>
+                <div className="flex justify-center gap-5 lg:justify-between" key={etf.symbol}>
+                    <div className="flex flex-col">
+                        <span className="text-xl">{etf.symbol}</span>
+                        <span className="text-xs">({etf.day.split("T")[0]})</span>
+                    </div>
+                    <BitcoinValue size="medium" btc={etf.shares} btcPrice={btcPrice}/>
                 </div>
-            ))
-            }
+            ))}
         </div>
 
     )
