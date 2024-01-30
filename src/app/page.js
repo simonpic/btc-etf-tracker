@@ -11,7 +11,9 @@ async function getCurrentHoldings() {
 
 async function getDailyHistory() {
     const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings/daily", {cache: "no-cache"})
-    return res.json()
+    const data = await res.json();
+    console.log(data);
+    return data
 }
 
 async function getBitcoinPrice() {
