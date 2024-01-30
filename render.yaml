@@ -1,13 +1,11 @@
 services:
   - type: web
-    name: next-js
+    name: btc-etf-tracker
     env: node
     plan: starter
     buildCommand: npm install; npm run build
     startCommand: npm run start
-    autoDeploy: false
+    autoDeploy: true
     envVars:
-      - key: NODE_VERSION
-        value: 19.0.0
-      - key: API_BASE_URL
-        value: soon
+      - key: BTC_ETF_TRACKER_API_URL
+        value: ""
