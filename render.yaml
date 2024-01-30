@@ -8,4 +8,4 @@ services:
     autoDeploy: true
     envVars:
       - key: BTC_ETF_TRACKER_API_URL
-        value: ""
+        value: http://btc-etf-watcher-api:10000
