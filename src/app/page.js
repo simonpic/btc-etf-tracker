@@ -2,6 +2,7 @@ import Shares from "@/app/components/Shares";
 import SharesChart from "@/app/components/SharesChart";
 import {faBitcoinSign, faDollarSign} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faGithub} from "@fortawesome/free-brands-svg-icons";
 
 async function getCurrentHoldings() {
     const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings/current", {cache: "no-cache"})
@@ -40,7 +41,6 @@ export default async function Home() {
                 </span>
             </div>
 
-
             <div className="mb-24 flex flex-col text-end">
                 <span className="text-7xl font-bold">
                     {Math.trunc(sum).toLocaleString()}
@@ -52,11 +52,15 @@ export default async function Home() {
                 </span>
             </div>
 
-
             <div className="flex flex-col items-center lg:items-start lg:flex-row lg:gap-20">
                 <SharesChart data={dailyHistory}/>
                 <Shares etfs={orderedEtf} btcPrice={btcPrice}/>
             </div>
+
+            <a href="https://github.com/simonpic/btc-etf-tracker" target="_blank" className="hidden lg:block fixed bottom-0 mb-3 text-gray-500">
+                <FontAwesomeIcon className="mr-1" icon={faGithub}/>
+                Github repo
+            </a>
         </main>
     );
 }
