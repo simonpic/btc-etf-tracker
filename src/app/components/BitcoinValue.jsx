@@ -22,7 +22,7 @@ export default function BitcoinValue({className, size, btc, btcPrice}) {
 
     return (
         <div className={className + " flex flex-col text-end"}>
-            <span className="font-bold">
+            <span >
                 <span className={textSize.btc}>{Math.trunc(btc).toLocaleString()}</span>
                 <FontAwesomeIcon className={textSize.btc + " ml-1"} icon={faBitcoinSign}/>
             </span>

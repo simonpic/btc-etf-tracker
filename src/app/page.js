@@ -1,5 +1,4 @@
-import Shares from "@/app/Shares";
-import BitcoinValue from "@/app/components/BitcoinValue";
+import Shares from "@/app/components/Shares";
 import SharesChart from "@/app/components/SharesChart";
 import {faBitcoinSign, faDollarSign} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -11,9 +10,7 @@ async function getCurrentHoldings() {
 
 async function getDailyHistory() {
     const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings/daily", {cache: "no-cache"})
-    const data = await res.json();
-    console.log(data);
-    return data
+    return res.json();
 }
 
 async function getBitcoinPrice() {
@@ -43,8 +40,20 @@ export default async function Home() {
                 </span>
             </div>
 
-            <BitcoinValue className="mb-24" size="large" btc={sum} btcPrice={btcPrice}/>
-            <div className="flex flex-col lg:flex-row lg:gap-20">
+
+            <div className="mb-24 flex flex-col text-end">
+                <span className="text-7xl font-bold">
+                    {Math.trunc(sum).toLocaleString()}
+                    <FontAwesomeIcon className="text-7xl ml-1" icon={faBitcoinSign}/>
+                </span>
+                <span className="text-lg text-green-600">
+                    {Math.trunc(sum * btcPrice).toLocaleString()}
+                    <FontAwesomeIcon className="text-lg ml-1" icon={faDollarSign}/>
+                </span>
+            </div>
+
+
+            <div className="flex flex-col items-center lg:items-start lg:flex-row lg:gap-20">
                 <SharesChart data={dailyHistory}/>
                 <Shares etfs={orderedEtf} btcPrice={btcPrice}/>
             </div>
