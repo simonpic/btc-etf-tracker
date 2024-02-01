@@ -26,5 +26,9 @@ export default {
     EZBC: {
         issuer: "Franklin",
         url: "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/39639/SINGLCLASS/franklin-bitcoin-etf/EZBC",
+    },
+    GBTC: {
+        issuer: "Grayscale",
+        url: "https://etfs.grayscale.com/gbtc"
     }
 }
