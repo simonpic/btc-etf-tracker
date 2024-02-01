@@ -16,7 +16,7 @@ export default function SharesChart({data}) {
         emphasis: {
             focus: 'series'
         },
-        data: Object.values(holdings[etf])
+        data: Object.values(holdings[etf]).map(btc => Math.trunc(btc))
     })).sort((a, b) => a.data[a.data.length - 1] - b.data[b.data.length - 1])
 
     const legend = series.map(serie => serie.name)
