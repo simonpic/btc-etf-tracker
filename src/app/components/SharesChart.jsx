@@ -32,7 +32,30 @@ export default function SharesChart({data}) {
                     backgroundColor: '#6a7985'
                 }
             },
-            order: 'seriesDesc'
+            backgroundColor: "#343434",
+            borderColor: "#000000",
+            formatter: params => {
+                const sum = params.map(param => param.data).reduce((a, b) => a + b, 0);
+                //const header = "<p>" + params[0].axisValueLabel + " <b>" + sum + "</b></p>"
+
+                const header = `<div class="flex mb-2">
+                    <span class="italic mr-2">${params[0].axisValueLabel}</span>
+                    <span class="font-bold">${sum}</span>
+                </div>`
+
+                const etfs = params.sort((a, b) => b.data - a.data).map(param => {
+                    const etf = param.seriesName
+                    const shares = param.data
+                    return `<div class="flex justify-between text-xs">
+                        <span>${param.marker}${etf}</span>
+                        <span class="font-bold self-end">${shares}</span>
+                    </div>`
+                }).join("")
+
+                const content = `<div class="flex flex-col">${etfs}</div>`
+
+                return `<div class="text-white">${header}${content}</div>`
+            }
         },
         legend: {
             data: legend
