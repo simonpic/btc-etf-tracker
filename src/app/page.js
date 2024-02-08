@@ -63,7 +63,7 @@ export default async function Home() {
 
             <Content histories={histories} etfs={orderedEtf} btcPrice={btcPrice}/>
 
-            <a href="https://github.com/simonpic/btc-etf-tracker" target="_blank" className="hidden lg:block fixed bottom-0 mb-3 text-gray-500">
+            <a href="https://github.com/simonpic/btc-etf-tracker" target="_blank" className="hidden xl:block fixed bottom-0 mb-3 text-gray-500">
                 <FontAwesomeIcon className="mr-1" icon={faGithub}/>
                 Github repo
             </a>

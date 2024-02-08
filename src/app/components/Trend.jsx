@@ -17,7 +17,7 @@ export default function Trend({history}) {
         icon = <FontAwesomeIcon className="place-self-center text-2xl" icon={faEquals}/>
     }
 
-    return <div className="flex ml-5 text-xs gap-3">
+    return <div className="flex ml-5 text-xs gap-3 transition-opacity">
         {icon}
         <div className="flex flex-col">
             <span className="text-xl mr-3">

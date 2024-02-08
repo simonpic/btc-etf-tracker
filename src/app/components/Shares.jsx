@@ -7,7 +7,7 @@ export default function Shares({etfs, holdings, btcPrice}) {
     console.log(holdings)
 
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 self-center">
             {etfs.map(etf => (
                 <div className="grid grid-cols-2 gap-3" key={etf.symbol}>
                     <a href={ETF[etf.symbol].url} target="_blank"

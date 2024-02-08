@@ -1,8 +1,8 @@
 'use client'
 
+import {useState} from "react";
 import SharesChart from "@/app/components/SharesChart";
 import Shares from "@/app/components/Shares";
-import {useRef, useState} from "react";
 
 
 export default function Content({histories, etfs, btcPrice}) {
@@ -42,7 +42,7 @@ export default function Content({histories, etfs, btcPrice}) {
         <div className="flex text-2xl mb-10">
             {intervals}
         </div>
-        <div className="flex flex-col items-center lg:items-start lg:flex-row lg:gap-20">
+        <div className="flex flex-col items-center lg:items-start xl:flex-row xl:gap-10">
             <SharesChart data={data}/>
             <Shares etfs={etfs} holdings={data.holdings} btcPrice={btcPrice}/>
         </div>
