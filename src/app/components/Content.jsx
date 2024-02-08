@@ -21,7 +21,7 @@ export default function Content({histories, etfs, btcPrice}) {
         }
     ]
 
-    const [period, setPeriod] = useState(periods[0].value)
+    const [period, setPeriod] = useState(periods[1].value)
     const [data, setData] = useState(histories[period])
 
     const handleClick = (newPeriod) => {
