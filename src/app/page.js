@@ -3,14 +3,15 @@ import SharesChart from "@/app/components/SharesChart";
 import {faBitcoinSign, faDollarSign} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
+import Content from "@/app/components/Content";
 
 async function getCurrentHoldings() {
     const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings/current", {cache: "no-cache"})
     return res.json()
 }
 
-async function getDailyHistory() {
-    const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings/daily", {cache: "no-cache"})
+async function getHistory(period) {
+    const res = await fetch(process.env.BTC_ETF_TRACKER_API_URL + "/holdings?period=" + period, {cache: "no-cache"})
     return res.json();
 }
 
@@ -27,7 +28,15 @@ export default async function Home() {
     const sum = currentHoldings.etfs.reduce((acc, cur) => acc + cur.shares, 0)
     const orderedEtf = currentHoldings.etfs.sort((etfA, etfB) => etfB.shares - etfA.shares);
 
-    const dailyHistory = await getDailyHistory();
+    const sevenDayHistory = await getHistory("SEVEN_DAY");
+    const oneMonthHistory = await getHistory("ONE_MONTH");
+    const threeMonthsHistory = await getHistory("THREE_MONTHS");
+
+    const histories = {
+        SEVEN_DAY: sevenDayHistory,
+        ONE_MONTH: oneMonthHistory,
+        THREE_MONTHS: threeMonthsHistory,
+    }
 
     const btcPrice = await getBitcoinPrice();
 
@@ -41,7 +50,7 @@ export default async function Home() {
                 </span>
             </div>
 
-            <div className="mb-24 flex flex-col text-end">
+            <div className="mb-16 flex flex-col text-end">
                 <span className="text-7xl font-bold">
                     {Math.trunc(sum).toLocaleString()}
                     <FontAwesomeIcon className="text-7xl ml-1" icon={faBitcoinSign}/>
@@ -52,10 +61,7 @@ export default async function Home() {
                 </span>
             </div>
 
-            <div className="flex flex-col items-center lg:items-start lg:flex-row lg:gap-20">
-                <SharesChart data={dailyHistory}/>
-                <Shares etfs={orderedEtf} btcPrice={btcPrice}/>
-            </div>
+            <Content histories={histories} etfs={orderedEtf} btcPrice={btcPrice}/>
 
             <a href="https://github.com/simonpic/btc-etf-tracker" target="_blank" className="hidden lg:block fixed bottom-0 mb-3 text-gray-500">
                 <FontAwesomeIcon className="mr-1" icon={faGithub}/>

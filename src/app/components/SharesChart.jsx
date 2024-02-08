@@ -6,7 +6,6 @@ export default function SharesChart({data}) {
     const days = data.days
     const axis = days.map(day => day.split("T")[0])
 
-
     const holdings = data.holdings;
     const series = Object.keys(holdings).map(etf => ({
         name: etf,
@@ -20,7 +19,6 @@ export default function SharesChart({data}) {
     })).sort((a, b) => a.data[a.data.length - 1] - b.data[b.data.length - 1])
 
     const legend = series.map(serie => serie.name)
-
 
     const options = {
         darkMode: true,
@@ -78,6 +76,6 @@ export default function SharesChart({data}) {
         series
     };
 
-    return <ReactECharts option={options} style={{height: '450px', width: '700px'}}/>
+    return <ReactECharts option={options} style={{height: '450px', width: '700px'}} loadingOption={{showSpinner: true}}/>
 
 }
