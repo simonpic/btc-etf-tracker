@@ -3,9 +3,6 @@ import ETF from "../model/ETF"
 import Trend from "@/app/components/Trend";
 
 export default function Shares({etfs, holdings, btcPrice}) {
-
-    console.log(holdings)
-
     return (
         <div className="flex flex-col gap-3 self-center">
             {etfs.map(etf => (

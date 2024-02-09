@@ -76,6 +76,6 @@ export default function SharesChart({data}) {
         series
     };
 
-    return <ReactECharts option={options} style={{height: '450px', width: '700px'}} loadingOption={{showSpinner: true}}/>
+    return <ReactECharts className="hidden md:block" option={options} style={{height: '450px', width: '700px'}} loadingOption={{showSpinner: true}}/>
 
 }

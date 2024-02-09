@@ -17,15 +17,15 @@ export default function Trend({history}) {
         icon = <FontAwesomeIcon className="place-self-center text-2xl" icon={faEquals}/>
     }
 
-    return <div className="flex ml-5 text-xs gap-3 transition-opacity">
+    return <div className="flex ml-5 gap-3">
         {icon}
         <div className="flex flex-col">
-            <span className="text-xl mr-3">
+            <span className="text-md md:text-xl mr-3">
                 {Math.trunc(variation).toLocaleString()}
                 <FontAwesomeIcon className="ml-1" icon={faBitcoinSign}/>
             </span>
 
-            <span >{percentage}%</span>
+            <span className="text-xs md:text-md">{percentage}%</span>
         </div>
     </div>
 }

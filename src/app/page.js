@@ -41,7 +41,7 @@ export default async function Home() {
     const btcPrice = await getBitcoinPrice();
 
     return (
-        <main className="flex min-h-screen flex-col items-center p-20">
+        <main className="flex min-h-screen flex-col items-center pt-20 px-2">
             <div className="absolute text-2xl top-0 right-0 p-1">
                 <span>
                     1<FontAwesomeIcon icon={faBitcoinSign}/>

@@ -42,7 +42,7 @@ export default function Content({histories, etfs, btcPrice}) {
         <div className="flex text-2xl mb-10">
             {intervals}
         </div>
-        <div className="flex flex-col items-center lg:items-start xl:flex-row xl:gap-10">
+        <div className="flex flex-col xl:flex-row xl:gap-10">
             <SharesChart data={data}/>
             <Shares etfs={etfs} holdings={data.holdings} btcPrice={btcPrice}/>
         </div>
