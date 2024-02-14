@@ -10,11 +10,11 @@ export default function Trend({history}) {
     let icon;
 
     if (variation > 0) {
-        icon = <FontAwesomeIcon className="place-self-center text-2xl text-green-600" icon={faArrowUp}/>
+        icon = <FontAwesomeIcon className="place-self-center text-xl md:text-2xl text-green-600" icon={faArrowUp}/>
     } else if (variation < 0) {
-        icon = <FontAwesomeIcon className="place-self-center text-2xl text-red-600" icon={faArrowDown}/>
+        icon = <FontAwesomeIcon className="place-self-center text-xl md:text-2xl text-red-600" icon={faArrowDown}/>
     } else {
-        icon = <FontAwesomeIcon className="place-self-center text-2xl" icon={faEquals}/>
+        icon = <FontAwesomeIcon className="place-self-center text-xl md:text-2xl" icon={faEquals}/>
     }
 
     return <div className="flex ml-5 gap-3">

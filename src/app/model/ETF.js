@@ -30,5 +30,9 @@ export default {
     GBTC: {
         issuer: "Grayscale",
         url: "https://etfs.grayscale.com/gbtc"
+    },
+    BTCW: {
+        issuer: "WisdomTree",
+        url: "https://www.wisdomtree.com/investments/etfs/crypto/btcw"
     }
 }
